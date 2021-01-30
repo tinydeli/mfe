@@ -20,12 +20,13 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: ls -al
+      - run: pwd
 
       #Voer uit sftp naar deploy server
       - name: SSH Server Deploy
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: dist
+          local: ./dist
           remote: /mnt/data/tinydeli.nl/httpd.www/container/latest
           host: ${{ secrets.SSH_SERVER_NAME }}
           username: ${{ secrets.SSH_USER_NAME }}
