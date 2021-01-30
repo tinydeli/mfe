@@ -20,15 +20,17 @@ jobs:
       - run: npm install
       - run: npm run build
 
-
-        #Voer uit sftp naar deploy server
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      #Voer uit sftp naar deploy server
+      - name: SSH Server Deploy
+        uses: kostya-ten/ssh-server-deploy@v4
         with:
-          server: ${{ secrets.SSH_SERVER_NAME }}
+          host: ${{ secrets.SSH_SERVER_NAME }}
+          port: 22
           username: ${{ secrets.SSH_USER_NAME }}
           password: ${{ secrets.SSH_USER_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: /mnt/data/tinydeli.nl/httpd.www/container/latest
-          protocol: sftp
-          port: 22
+          scp_source: ./build/
+          scp_target: /mnt/data/tinydeli.nl/httpd.www/container/latest
+          before_script: |
+            df -h
+          after_script: |
+            whoami
