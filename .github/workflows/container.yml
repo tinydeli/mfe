@@ -21,14 +21,14 @@ jobs:
       - run: npm run build
 
 
-      #Voer uit sftp naar deploy server
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      env:
-        server: ${{ secrets.SSH_SERVER_NAME }}
-        username: ${{ secrets.SSH_USER_NAME }}
-        password: ${{ secrets.SSH_USER_PASSWORD }}
-        local-dir: ./dist/
-        server-dir: /mnt/data/tinydeli.nl/httpd.www/container/latest/
-        protocol: sftp
-        port: 22
+        #Voer uit sftp naar deploy server
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        env:
+          server: ${{ secrets.SSH_SERVER_NAME }}
+          username: ${{ secrets.SSH_USER_NAME }}
+          password: ${{ secrets.SSH_USER_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /mnt/data/tinydeli.nl/httpd.www/container/latest
+          protocol: sftp
+          port: 22
