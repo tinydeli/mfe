@@ -3,11 +3,6 @@ name: 'deploy module container'
 
 #On regelt op welke actie het script activeert
 on:
-  workflow_dispatch:
-    branches:
-      - master
-    paths:
-      - '/packages/container/**'
   push:
     branches:
       - master
