@@ -7,7 +7,7 @@ on:
     branches:
       - master
     paths:
-      - '/packages/container/**'
+      - 'packages/container/**'
 
 #Zorg dat de actie wordt uitgevoer relatief in de folder container
 defaults:
