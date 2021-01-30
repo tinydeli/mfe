@@ -20,13 +20,15 @@ jobs:
       - run: npm install
       - run: npm run build
 
+
       #Voer uit sftp naar deploy server
-      - name: deploy file
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
-        with:
-          username: ${{ secrets.SSH_USER_NAME }}
-          server: ${{ secrets.SSH_SERVER_NAME }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
-          local_path: './dist/*'
-          remote_path: '/mnt/data/tinydeli.nl/httpd.www/container/latest'
-          args: '-o ConnectTimeout=5'
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      env:
+        server: ${{ secrets.SSH_SERVER_NAME }}
+        username: ${{ secrets.SSH_USER_NAME }}
+        password: ${{ secrets.SSH_USER_PASSWORD }}
+        local-dir: ./dist/
+        server-dir: /mnt/data/tinydeli.nl/httpd.www/container/latest/
+        protocol: sftp
+        port: 22
