@@ -24,7 +24,7 @@ jobs:
         #Voer uit sftp naar deploy server
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        env:
+        with:
           server: ${{ secrets.SSH_SERVER_NAME }}
           username: ${{ secrets.SSH_USER_NAME }}
           password: ${{ secrets.SSH_USER_PASSWORD }}
