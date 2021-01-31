@@ -8,5 +8,5 @@ export default () => {
         mount(containerRef.current)
     });
 
-    return <div ref={containerRef} />
+    return <div id="anus" ref={containerRef} />
 };
