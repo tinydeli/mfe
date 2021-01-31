@@ -31,3 +31,4 @@ jobs:
           host: ${{ secrets.SSH_SERVER_NAME }}
           username: ${{ secrets.SSH_USER_NAME }}
           password: ${{ secrets.SSH_USER_PASSWORD }}
+          rmRemote : true
