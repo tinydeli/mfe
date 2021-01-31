@@ -2,11 +2,11 @@ import { mount } from 'modMarketing/MarketingIndex';
 import React, { useRef, useEffect } from 'react';
 
 export default () => {
-    const ref = useRef(null);
+    const containerRef = useRef(null);
 
     useEffect( () => {
-        mount(ref.current)
+        mount(containerRef.current)
     });
 
-    return <div ref={ref} />
+    return <div ref={containerRef} />
 };
