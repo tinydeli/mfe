@@ -1,15 +1,15 @@
-name: deploy-container
+name: deploy-marketing
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'packages/container/**'
+      - 'packages/marketing/**'
 
 defaults:
   run:
-    working-directory: packages/container
+    working-directory: packages/marketing
 
 jobs:
   build:
@@ -27,8 +27,8 @@ jobs:
       - name: SSH Server Deploy
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: packages/container/dist
-          remote: /mnt/data/tinydeli.nl/httpd.www/container/latest
+          local: packages/marketing/dist
+          remote: /mnt/data/tinydeli.nl/httpd.www/marketing/latest
           host: ${{ secrets.SSH_SERVER_NAME }}
           username: ${{ secrets.SSH_USER_NAME }}
           password: ${{ secrets.SSH_USER_PASSWORD }}
