@@ -36,3 +36,15 @@ jobs:
           username: ${{ secrets.SSH_USER_NAME }}
           password: ${{ secrets.SSH_USER_PASSWORD }}
           rmRemote : true
+
+      #Invalidation skipped for AWS, reminder for caching (remoteEntry.js)
+      #Voer uit sftp naar deploy server voor index.html naar main dir
+      - name: SSH Server Deploy
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: packages/container/dist/index.html
+          remote: /mnt/data/tinydeli.nl/httpd.www/index.html
+          host: ${{ secrets.SSH_SERVER_NAME }}
+          username: ${{ secrets.SSH_USER_NAME }}
+          password: ${{ secrets.SSH_USER_PASSWORD }}
+          rmRemote : true
