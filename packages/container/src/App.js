@@ -7,9 +7,10 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 //92.65.232.88 ip work
 //85.149.29.94 ip home
 
+//Material UI css specific
 //To prevent css classname collisions that are caused by generated pseudo random short css classnames at productionbuildtime
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'co'
+  productionPrefix: 'con'
 });
 
 export default () => {
