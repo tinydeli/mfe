@@ -5,6 +5,7 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import Landing from './components/Landing';
 import Pricing from './components/Pricing';
 
+//To prevent css classname collisions that are caused by generated pseudo random short css classnames at productionbuildtime
 const generateClassName = createGenerateClassName({
     productionPrefix: 'ma'
 });
