@@ -1,4 +1,4 @@
-import { mount } from 'modMarketing/MarketingIndex';
+import { mount } from 'modAuth/AuthIndex';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -10,11 +10,6 @@ export default () => {
         const {onParentNavigate} = mount(containerRef.current, {
             initialPath: history.location.pathname,
             onNavigate: ({pathname: nextPathname}) => {
-                // console.log('Container noticed navigation in marketing to: ',location.pathname);
-                console.log(nextPathname);
-                //synch memoryrouter from module with browserrouter from container
-
-                //to prevet infinite event flow, check current path name (must be diff from next)
                 const {pathname} = history.location;
 
                 if(pathname!=nextPathname) {
