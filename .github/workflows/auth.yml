@@ -1,0 +1,38 @@
+name: deploy-auth
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'packages/auth/**'
+
+defaults:
+  run:
+    working-directory: packages/auth
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
+          
+      #- run: rm ./dist/*.txt
+      #- run: rm ./dist/*.html
+
+      #Invalidation skipped for AWS, reminder for caching (remoteEntry.js)
+      #Voer uit sftp naar deploy server
+      - name: SSH Server Deploy
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: packages/auth/dist
+          remote: /mnt/data/tinydeli.nl/httpd.www/auth/latest
+          host: ${{ secrets.SSH_SERVER_NAME }}
+          username: ${{ secrets.SSH_USER_NAME }}
+          password: ${{ secrets.SSH_USER_PASSWORD }}
+          rmRemote : true
