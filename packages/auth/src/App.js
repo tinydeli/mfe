@@ -6,7 +6,7 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 
 //Material UI css specific
-//To prevent css classname collisions that are caused by generated pseudo random short css classnames at productionbuildtime
+//To prevent css classname collisions that are caused by generated pseudo random short css classnames at productionbuildtime//
 const generateClassName = createGenerateClassName({
     productionPrefix: 'aut'
 });
